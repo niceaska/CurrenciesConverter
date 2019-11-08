@@ -1,6 +1,5 @@
 package ru.niceaska.currenciesconverter.data.repository;
 
-import android.nfc.Tag;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -10,7 +9,6 @@ import org.simpleframework.xml.convert.AnnotationStrategy;
 import org.simpleframework.xml.core.Persister;
 import org.simpleframework.xml.strategy.Strategy;
 
-import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;
@@ -21,8 +19,9 @@ import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 import ru.niceaska.currenciesconverter.data.model.CurrenciesData;
 import ru.niceaska.currenciesconverter.data.model.CurrencyHelper;
 import ru.niceaska.currenciesconverter.data.model.CurrencyModel;
+import ru.niceaska.currenciesconverter.domain.ICurrenciesRepository;
 
-public class CurrenciesConverterRepository {
+public class CurrenciesConverterRepository implements ICurrenciesRepository {
     private static final String BASE_URL = "http://www.cbr.ru";
 
     private final ICurrenciesApi currenciesApi;
@@ -40,6 +39,7 @@ public class CurrenciesConverterRepository {
         currenciesApi = retrofit.create(ICurrenciesApi.class);
     }
 
+    @Override
     public void loadCurrenicesList(IOnLoadCurrenciesListener listener) {
         currenciesApi.loadCurrencies().enqueue(new Callback<CurrenciesData>() {
             @Override

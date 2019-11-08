@@ -8,4 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="covert_value_marginbottom">
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="margin_bottom">
+        <item name="android:layout_marginBottom">24dp</item>
+    </style>
+
+    <style name="result_gravity">
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
 </resources>
